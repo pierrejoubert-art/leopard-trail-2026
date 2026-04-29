@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Leopard Trail lists
+    // Structure: leopard/{packing|shopping}/items/{itemId}
+    match /leopard/{listId}/items/{itemId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
